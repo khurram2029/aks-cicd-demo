@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: aks-cicd-demo
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: aks-cicd-demo
+
+  template:
+    metadata:
+      labels:
+        app: aks-cicd-demo
+
+    spec:
+      containers:
+        - name: aks-cicd-demo
+          image: kube1registry.azurecr.io/akscicddemo:latest
+          ports:
+            - containerPort: 80
